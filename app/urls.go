@@ -1,6 +1,9 @@
 package app
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/soshika/sample-search/controllers/SE"
+)
 
 func urlPatterns() {
 
@@ -8,5 +11,6 @@ func urlPatterns() {
 		"api-key": "L1^hGk8z!jT6oD2p",
 	}))
 
-	authorized.POST("/search")
+	authorized.POST("/search", SE.Search)
+	authorized.POST("/index", SE.IndexExcel)
 }
