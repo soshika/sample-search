@@ -76,6 +76,8 @@ func (s *seService) Search(req *SE.SearchEngineReq) (*SE.SearchEngineResponse, e
 		return nil, err
 	}
 
+	fmt.Println(*query)
+
 	var body map[string]interface{}
 
 	// Unmarshal the JSON string into the map

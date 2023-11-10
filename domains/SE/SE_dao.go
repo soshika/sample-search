@@ -11,7 +11,7 @@ const (
 
 func (se *SearchEngineReq) GenerateSearchQuery() (*string, error) {
 
-	queryDSL := fmt.Sprintf(queryDSLSearch, se.Query, se.Size, se.From)
+	queryDSL := fmt.Sprintf(queryDSLSearch, se.Query, *se.Size, *se.From)
 
 	return &queryDSL, nil
 }

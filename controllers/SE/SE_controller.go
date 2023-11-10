@@ -70,7 +70,6 @@ func Search(c *gin.Context) {
 
 	data, serviceErr := services.SEService.Search(&searchREQ)
 	if serviceErr != nil {
-
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
