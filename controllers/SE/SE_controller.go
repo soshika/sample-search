@@ -61,5 +61,22 @@ func IndexExcel(c *gin.Context) {
 func Search(c *gin.Context) {
 	logger.Info("Enter to Search controller successfully")
 
+	searchREQ := SE.SearchEngineReq{}
+	if err := c.ShouldBindJSON(&searchREQ); err != nil {
+		logger.Error("error when trying to bind json", err)
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
+	}
+
+	data, serviceErr := services.SEService.Search(&searchREQ)
+	if serviceErr != nil {
+
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
+	}
+
+	c.Writer.Header().Set("Content-Type", "application/json")
+	c.JSON(http.StatusOK, data)
+
 	logger.Info("Close from Search controller successfully")
 }
