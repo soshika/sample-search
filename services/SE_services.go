@@ -36,10 +36,10 @@ func (s *seService) IndexExcel(req *SE.Excel) (map[string]interface{}, error) {
 		return nil, err
 	}
 
-	//final := make(map[string]interface{})
-	//final["data"] = result
+	final := make(map[string]interface{})
+	final["data"] = result
 
-	req.Data = result
+	req.Data = final
 
 	ESReq := requests.Req{
 		URL:    fmt.Sprintf("http://localhost:9200/%s/_doc", req.Index),
@@ -85,7 +85,7 @@ func (s *seService) Search(req *SE.SearchEngineReq) (*SE.SearchEngineResponse, e
 	}
 
 	esREQ := requests.Req{
-		URL:    fmt.Sprintf("http://localhost:9200/%s/_search", req.Index),
+		URL:    "http://localhost:9200/excel/_search",
 		Method: "POST",
 	}
 

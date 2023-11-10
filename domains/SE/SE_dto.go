@@ -8,9 +8,9 @@ import (
 )
 
 type Excel struct {
-	Index    string   `json:"index"`
-	FileName string   `json:"file_name"`
-	Data     []string `json:"data"`
+	Index    string                 `json:"index"`
+	FileName string                 `json:"file_name"`
+	Data     map[string]interface{} `json:"data"`
 }
 
 func (excel *Excel) Save() ([]string, error) {
